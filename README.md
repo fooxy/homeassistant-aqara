@@ -39,7 +39,8 @@ It's in Chinese so you might need a translator to read it.
 
 ### TODO
 
- - Include in the configuration file some options : IP, refresh frequency, etc.
+ - create a custom component as Hub to manage sensors, swith, etc.
+ - include in the configuration file some options : IP, refresh frequency, etc.
  - generate a yaml file with discovered devices
  - integrate motion and contact sensor
  - etc.
