@@ -13,7 +13,7 @@ DOMAIN = 'Aqara'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/0.1.zip#pyAqara==0.1']
+REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.1-alpha.zip#pyAqara==0.1']
 SENSOR_TYPES = ['temperature', 'humidity']
 
 # Return cached results if last scan was less then this time ago
@@ -123,9 +123,6 @@ class HTSensor(Entity):
         
         updateValue = self.deviceData.data
         if updateValue is not None:
-            _LOGGER.error("aqaraData. updateValue: ", updateValue)
-
-            #temperature higher -20 and lower than 60
             self._state = updateValue
 
     ############################################################################
