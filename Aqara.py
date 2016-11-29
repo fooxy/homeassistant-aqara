@@ -79,7 +79,7 @@ class HTSensor(Entity):
     def name(self):
         """Return the name of the sensor."""
         if self.type == "temperature":
-            return self.deviceName
+            return '{} {}'.format(self.type, self.deviceName)
         elif self.type == "humidity":
             return '{} {}'.format(self.type, self.deviceName)
 
