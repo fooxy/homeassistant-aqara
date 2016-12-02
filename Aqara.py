@@ -13,7 +13,7 @@ DOMAIN = 'Aqara'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.1-alpha.zip#pyAqara==0.1']
+REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.2-alpha.zip#pyAqara==0.2']
 SENSOR_TYPES = ['temperature', 'humidity']
 
 # Return cached results if last scan was less then this time ago
@@ -23,21 +23,22 @@ def setup_platform(hass, config, add_devices_callback, discovery_info=None):
     """Setup the sensor platform."""
         
     _LOGGER.info("Setting Up the Platform")
-
+    
+    devices = []
     sensorItems = []
 
-    devices = [
-    {"name":"Living-room","id":"158d0000fa3793"},
-    {"name":"Bedroom 1","id":"158d000108164f"},
-    {"name":"Bedroom 2","id":"158d0001182c2f"},
-    {"name":"Bedroom 3","id":"158d0000f19b31"},
-    {"name":"Outdoor West","id":"158d0001143246"},
-    {"name":"Outdoor East","id":"158d0001081511"}
-    ]
+    import pyAqara
+    gateway = pyAqara.AqaraGateway()
+    devicesList = gateway.get_devicesList()
+
+    #magnet / motion / sensor_ht
+    for deviceSID in devicesList:
+        model = gateway.get_model(deviceSID)
+        if model == 'sensor_ht':
+            devices.append({"name":deviceSID,"id":deviceSID})
 
     try:
-        aqaraData = AqaraData()
-        # aqaraData.update()      
+        aqaraData = AqaraData()   
     except:
         return False
 
@@ -47,12 +48,6 @@ def setup_platform(hass, config, add_devices_callback, discovery_info=None):
 
     add_devices_callback(sensorItems)
     return True
-
-    ############################################################################
-    #                                                                          #
-    #                            HT SENSOR                                     #
-    #                                                                          #
-    ############################################################################
 
 class HTSensor(Entity):
     """Representation of a Sensor."""
@@ -121,9 +116,9 @@ class HTSensor(Entity):
         except:
             _LOGGER.error("Aqara Entity Failed to Update the device %s, %s",self.deviceName, self.deviceID)
         
-        updateValue = self.deviceData.data
-        if updateValue is not None:
-            self._state = updateValue
+        updatedValue = self.deviceData.data
+        if updatedValue is not None:
+            self._state = updatedValue
 
     ############################################################################
     #                                                                          #
@@ -143,10 +138,9 @@ class AqaraData(object):
     # @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         """Get the latest data from the Bbox."""
-        import pyAqara
         
+        import pyAqara
         try:  
-            # print('RHAY AqaraData - update() Try')
             gateway = pyAqara.AqaraGateway()
             if self.variable == "temperature":
                 self.data = gateway.get_temperature(self.SID)
