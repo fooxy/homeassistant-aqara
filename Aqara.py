@@ -13,7 +13,7 @@ DOMAIN = 'Aqara'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.2-alpha.zip#pyAqara==0.2']
+REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.21-alpha.zip#pyAqara==0.21']
 SENSOR_TYPES = ['temperature', 'humidity']
 
 # Return cached results if last scan was less then this time ago
