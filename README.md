@@ -12,25 +12,47 @@ It's in Chinese so you might need a translator to read it.
 
     `.homeassistant/custom_components/sensor/Aqara.py`
 
-4. Customize the Aqara.py file with your sensor Ids:
+4. Home-Assistant will display each sensor like so:
+ - sensor.temperature_158d0000fa3793
+ - sensor.humidity_158d0000fa3793
+ - etc.
+ 
+Create a customize.yaml file in the home-assistant folder with following lines as example:
+
  - Example
 
-    ```python
-    devices = [
-    {"name":"Living-room","id":"XYXYXYXYX"},
-    {"name":"Bedroom 1","id":"XYXYXYXYX"},
-    {"name":"Bedroom 2","id":"XYXYXYXYX"},
-    {"name":"Bedroom 3","id":"XYXYXYXYX"},
-    {"name":"Outdoor West","id":"XYXYXYXYX"},
-    {"name":"Outdoor East","id":"XYXYXYXYX"}
-    ] 
- ```
+    ```yaml
+     sensor.temperature_158d0000fa3793:
+       friendly_name: Living-Room T
+     sensor.humidity_158d0000fa3793:
+       friendly_name: Living-Room H
+       icon: mdi:water-percent
 
-5. Customize the IP in the pyAqara/__init.__.py
+     sensor.temperature_158d000108164f:
+       friendly_name: Bedroom 1 T
+     sensor.humidity_158d000108164f:
+       friendly_name: Bedroom 1 H
+       icon: mdi:water-percent
+       
+       ... etc.
+    ```
+
+5. Add a line in the configuration.yaml:
+
+    ```yaml
+homeassistant:
+  # Name of the location where Home Assistant is running
+   name: Home
+...
+   time_zone: Europe/Paris
+   customize: !include customize.yaml
+    ```
+
+6. Customize the Aqara gateway IP in the pyAqara/__init.__.py
 
   `.homeassistant/deps/pyAqara/__init__.py`
 
-5. Add the new component in the configuration.yaml:
+7. Add the new component in the configuration.yaml:
 
     ```yaml
     sensor :
