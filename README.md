@@ -3,7 +3,7 @@ Home-Assistant custom component
 
 Compatible with temperature and humidity sensors
 
-### Installation
+### INSTALLATION
 1. Install Home-Assistant,
 2. Enable the developer mode of the gateway.
  - Please follow the steps in this thread: http://bbs.xiaomi.cn/t-13198850. 
@@ -12,7 +12,16 @@ It's in Chinese so you might need a translator to read it.
 
     `.homeassistant/custom_components/sensor/Aqara.py`
 
-4. Home-Assistant will display each sensor like so:
+4. Add the new component in the configuration.yaml:
+
+    ```yaml
+    sensor :
+      platform: Aqara
+    ```
+
+### CUSTOMIZATION
+
+Home-Assistant will display each sensor like so:
  - sensor.temperature_158d0000fa3793
  - sensor.humidity_158d0000fa3793
  - etc.
@@ -48,16 +57,6 @@ homeassistant:
    customize: !include customize.yaml
     ```
 
-6. Customize the Aqara gateway IP in the pyAqara/__init.__.py
-
-  `.homeassistant/deps/pyAqara/__init__.py`
-
-7. Add the new component in the configuration.yaml:
-
-    ```yaml
-    sensor :
-      platform: Aqara
-    ```
 
 ### TODO
 
