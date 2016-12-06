@@ -1,7 +1,9 @@
 # homeassistant-aqara
-Home-Assistant custom component
-
-Compatible with temperature and humidity sensors
+Home-Assistant implementation for the Xiaomi (Aqara) gateway
+Supported sensors:
+  - Temperature / Humidity
+  - Door / Window
+  - Motion
 
 ### INSTALLATION
 1. Install Home-Assistant,
@@ -59,6 +61,43 @@ homeassistant:
    time_zone: Europe/Paris
    customize: !include customize.yaml
     ```
+
+### Magnet Automation example
+
+ - Example configuration.yaml
+
+ ```yaml
+ binary_sensor:
+   - platform: template
+     sensors:
+       door:
+         friendly_name: Frontdoor
+         value_template: "{{ states.sensor.magnet_158d0001179ae9.state == 'open' }}"
+         sensor_class: opening
+         entity_id:
+             - sensor.magnet_158d0001179ae9
+
+automation:
+  - alias: FrontDoorClosed
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door
+      to: 'off'
+    action:
+      service: notify.TelegramNotifier
+      data:
+       message: Door closed
+  - alias: FrontDoorOpened
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door
+      to: 'on'
+    action:
+      service: notify.TelegramNotifier
+      data:
+       message: Door opened
+ ```
+
 
 ### TODO
 
