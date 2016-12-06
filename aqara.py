@@ -1,16 +1,16 @@
-from pyAqara.sensor import Sensor, HTSensorData, MagnetData, MotionData
-from pyAqara.gateway import AqaraGateway
 import logging
 
 DOMAIN = 'Aqara'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS =['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.3-alpha.zip#pyAqara==0.3']
+REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.3-alpha.zip#pyAqara==0.3']
+
 
 def setup_platform(hass, config, add_devices_callback, discovery_info=None):
     """Setup the sensor platform."""
-
+    from pyAqara.sensor import Sensor, HTSensorData, MagnetData, MotionData
+    from pyAqara.gateway import AqaraGateway
     # get the gateway and init it's ip / port via whoami
     gateway = AqaraGateway()
     gateway.initGateway()
