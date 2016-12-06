@@ -12,7 +12,7 @@ Supported sensors:
 3. Download and place the Aqara.py and pyAqara/__init__.py file in the home-assistant folder like this:
 
     `.homeassistant/custom_components/sensor/Aqara.py`
-    `.homeassistant/custom_components/sensor/Aqara.py`
+    `.homeassistant\deps\pyAqara\__init__.py`
 
 4. Add the new component in the configuration.yaml:
 
@@ -26,8 +26,10 @@ Supported sensors:
 
 Since until now there is no way to retrieve the configured names from the
 gateway, Home-Assistant will display each sensor like that:
- - sensor.temperature_158d0000fa3793
- - sensor.humidity_158d0000fa3793
+ - sensor.temperature_SENSORID
+ - sensor.humidity_SENSORID
+ - sensor.magnet_SENSORID
+ - sensor.motion_SENSORID
  - etc.
 
 To make it readable again, create a customize.yaml file in the home-assistant folder.
@@ -102,6 +104,6 @@ automation:
 ### TODO
 
  - create a custom component as Hub to manage gateway devices.
- - include in the configuration file some options : IP, refresh frequency, etc.
+ - include some options in the configuration file : IP, refresh frequency, etc.
  - generate a yaml file with discovered devices
  - integrate wireless switch, light switches, cube, plug, gateway itself (turn on light / radio / etc.)
