@@ -6,10 +6,7 @@ DOMAIN = 'Aqara'
 
 _LOGGER = logging.getLogger(__name__)
 
-# Since the package is older than my local files leave this commented for now
-# REQUIREMENTS =
-# ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.1-alpha.zip#pyAqara==0.1']
-
+REQUIREMENTS =['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.3-alpha.zip#pyAqara==0.3']
 
 def setup_platform(hass, config, add_devices_callback, discovery_info=None):
     """Setup the sensor platform."""
