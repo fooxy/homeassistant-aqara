@@ -1,5 +1,3 @@
-#This is not in the main branch get the pyAqara files from: 
-
 # homeassistant-aqara
 Home-Assistant implementation for the Xiaomi (Aqara) gateway
 Supported sensors:
@@ -11,7 +9,7 @@ Supported sensors:
 1. Install Home-Assistant,
 2. Enable the developer mode of the gateway.
  - Please follow the steps in this thread: http://bbs.xiaomi.cn/t-13198850 (translated version: https://goo.gl/gEVIrn).
-3. Download and place the Aqara.py and pyAqara/__init__.py file in the home-assistant folder like this:
+3. Download and place the Aqara.py file in the home-assistant folder like this:
 
     `.homeassistant/custom_components/sensor/Aqara.py`
 
