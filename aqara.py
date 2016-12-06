@@ -6,8 +6,9 @@ DOMAIN = 'Aqara'
 
 _LOGGER = logging.getLogger(__name__)
 
-# Magnet Sensor need frequent polls since it's possible that ist's not
-# open that long
+# Since the package is older than my local files leave this commented for now
+# REQUIREMENTS =
+# ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.1-alpha.zip#pyAqara==0.1']
 
 
 def setup_platform(hass, config, add_devices_callback, discovery_info=None):
@@ -22,7 +23,6 @@ def setup_platform(hass, config, add_devices_callback, discovery_info=None):
     dynamicDevices = gateway.get_devicesList()
     for device in dynamicDevices:
         deviceResponse = gateway.get_read(device)
-        _LOGGER.info("Got device %s", deviceResponse)
         model = deviceResponse['model']
         sid = deviceResponse['sid']
         # TODO: find a way to get the configured name from the gateway
