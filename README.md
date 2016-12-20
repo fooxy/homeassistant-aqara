@@ -12,9 +12,9 @@ Supported sensors:
  https://github.com/fooxy/homeassistant-aqara/wiki/Enable-dev-mode
 3. Download and place aqara.py files in the home-assistant folder like this:
 
-    `.homeassistant/custom_components/aqara.py
-    .homeassistant/custom_components/sensor/aqara.py
-    .homeassistant/custom_components/binary_sensor/aqara.py`
+    - .homeassistant/custom_components/aqara.py
+    - .homeassistant/custom_components/sensor/aqara.py
+    - .homeassistant/custom_components/binary_sensor/aqara.py
 
 4. Add the new component in the configuration.yaml:
 lowcase is important
