@@ -2,23 +2,26 @@
 Home-Assistant implementation for the Xiaomi (Aqara) gateway
 Supported sensors:
   - Temperature / Humidity
-  - Door / Window
+  - Magnet (Door / Window)
   - Motion
 
 ### INSTALLATION
 1. Install Home-Assistant,
 2. Enable the developer mode of the gateway.
- - Please follow the steps in this thread: http://bbs.xiaomi.cn/t-13198850 (translated version: https://goo.gl/gEVIrn).
-3. Download and place the Aqara.py file in the home-assistant folder like this:
+ - Please follow the steps in the wiki:
+ https://github.com/fooxy/homeassistant-aqara/wiki/Enable-dev-mode
+3. Download and place aqara.py files in the home-assistant folder like this:
 
-    `.homeassistant/custom_components/sensor/Aqara.py`
+    `.homeassistant/custom_components/aqara.py
+    .homeassistant/custom_components/sensor/aqara.py
+    .homeassistant/custom_components/binary_sensor/aqara.py`
 
 4. Add the new component in the configuration.yaml:
+lowcase is important
 
     ```yaml
     sensor :
-      platform: Aqara
-      scan_interval: 1
+      platform: aqara
     ```
 
 ### CUSTOMIZATION
