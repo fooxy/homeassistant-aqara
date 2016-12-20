@@ -16,12 +16,11 @@ Supported sensors:
     - .homeassistant/custom_components/sensor/aqara.py
     - .homeassistant/custom_components/binary_sensor/aqara.py
 
-4. Add the new component in the configuration.yaml:
+4. Add the new platform in the configuration.yaml:
 lowcase is important
 
     ```yaml
-    sensor :
-      platform: aqara
+     aqara:
     ```
 
 ### CUSTOMIZATION
