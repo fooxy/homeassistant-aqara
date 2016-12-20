@@ -29,8 +29,8 @@ Since until now there is no way to retrieve the configured names from the
 gateway, Home-Assistant will display each sensor like that:
  - sensor.temperature_SENSORID
  - sensor.humidity_SENSORID
- - sensor.magnet_SENSORID
- - sensor.motion_SENSORID
+ - binary_sensor.magnet_SENSORID
+ - binary_sensor.motion_SENSORID
  - etc.
 
 To make it readable again, create a customize.yaml file in the home-assistant folder.
@@ -75,10 +75,10 @@ homeassistant:
      sensors:
        door:
          friendly_name: Frontdoor
-         value_template: "{{ states.sensor.magnet_158d0001179ae9.state == 'open' }}"
+         value_template: "{{ states.binary_sensor.magnet_158d0001179ae9.state == 'open' }}"
          sensor_class: opening
          entity_id:
-             - sensor.magnet_158d0001179ae9
+             - binary_sensor.magnet_158d0001179ae9
 
 automation:
   - alias: FrontDoorClosed
