@@ -41,7 +41,7 @@ class AqaraBinarySensor(BinarySensorDevice,Entity):
 
         status = deviceData['status']
         if deviceModel == 'magnet':
-            if status =='close':
+            if status =='open':
                 self._state = True
             else:
                 self._state = False
@@ -85,7 +85,7 @@ class AqaraBinarySensor(BinarySensorDevice,Entity):
     
     def pushUpdate(self,model,status):
         if model == 'magnet':
-            if status =='close':
+            if status =='open':
                 self._state = True
             else:
                 self._state = False
