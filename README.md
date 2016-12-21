@@ -1,9 +1,10 @@
 # homeassistant-aqara
 Home-Assistant implementation for the Xiaomi (Aqara) gateway
 Supported sensors:
-  - Temperature / Humidity
+  - Temperature / Humidity - reports if temperature change reaches 0.5 ° C or the humidity change reaches 6%.
   - Magnet (Door / Window)
   - Motion
+  - switch (for test, I do not have the switch for the moment.) 
 
 ### INSTALLATION
 1. Install Home-Assistant,
