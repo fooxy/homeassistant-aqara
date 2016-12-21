@@ -2,23 +2,25 @@
 Home-Assistant implementation for the Xiaomi (Aqara) gateway
 Supported sensors:
   - Temperature / Humidity
-  - Door / Window
+  - Magnet (Door / Window)
   - Motion
 
 ### INSTALLATION
 1. Install Home-Assistant,
 2. Enable the developer mode of the gateway.
- - Please follow the steps in this thread: http://bbs.xiaomi.cn/t-13198850 (translated version: https://goo.gl/gEVIrn).
-3. Download and place the Aqara.py file in the home-assistant folder like this:
+ - Please follow the steps in the wiki:
+ https://github.com/fooxy/homeassistant-aqara/wiki/Enable-dev-mode
+3. Download and place aqara.py files in the home-assistant folder like this:
 
-    `.homeassistant/custom_components/sensor/Aqara.py`
+    - .homeassistant/custom_components/aqara.py
+    - .homeassistant/custom_components/sensor/aqara.py
+    - .homeassistant/custom_components/binary_sensor/aqara.py
 
-4. Add the new component in the configuration.yaml:
+4. Add the new platform in the configuration.yaml:
+lowcase is important
 
     ```yaml
-    sensor :
-      platform: Aqara
-      scan_interval: 1
+     aqara:
     ```
 
 ### CUSTOMIZATION
@@ -27,8 +29,8 @@ Since until now there is no way to retrieve the configured names from the
 gateway, Home-Assistant will display each sensor like that:
  - sensor.temperature_SENSORID
  - sensor.humidity_SENSORID
- - sensor.magnet_SENSORID
- - sensor.motion_SENSORID
+ - binary_sensor.magnet_SENSORID
+ - binary_sensor.motion_SENSORID
  - etc.
 
 To make it readable again, create a customize.yaml file in the home-assistant folder.
@@ -73,10 +75,10 @@ homeassistant:
      sensors:
        door:
          friendly_name: Frontdoor
-         value_template: "{{ states.sensor.magnet_158d0001179ae9.state == 'open' }}"
+         value_template: "{{ states.binary_sensor.magnet_158d0001179ae9.state == 'open' }}"
          sensor_class: opening
          entity_id:
-             - sensor.magnet_158d0001179ae9
+             - binary_sensor.magnet_158d0001179ae9
 
 automation:
   - alias: FrontDoorClosed
