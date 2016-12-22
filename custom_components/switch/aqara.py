@@ -39,7 +39,6 @@ class AqaraSwitchSensor(ToggleEntity):
         self.deviceName = deviceName
         self.deviceSID = deviceSID
         self.deviceModel = deviceModel
-        self.deviceData = deviceData
         self.deviceVariable = deviceVariable
         self.uniqueID = '{} {} {}'.format(deviceModel, deviceVariable, deviceSID)
 
