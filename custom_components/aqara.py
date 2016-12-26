@@ -1,7 +1,11 @@
 from homeassistant.components.discovery import load_platform
 from homeassistant.const import (EVENT_HOMEASSISTANT_START,
                                  EVENT_HOMEASSISTANT_STOP)
+
+from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.entity import Entity
+
+import voluptuous as vol
 
 import logging
 
@@ -12,8 +16,17 @@ DOMAIN = 'aqara'
 REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.41-alpha.zip#pyAqara==0.41']
 
 AQARA_COMPONENTS = [
-    'sensor','binary_sensor','switch'
+    'sensor','binary_sensor','switch',
 ]
+
+CONF_GATEWAY_PASSWORD = 'gateway_password'
+
+CONFIG_SCHEMA = vol.Schema({
+    DOMAIN: vol.Schema({
+        vol.Optional(CONF_GATEWAY_PASSWORD, default=''): cv.string
+    })
+}, extra=vol.ALLOW_EXTRA)
+
 
 def setup(hass, config):
     """Your controller/hub specific code."""
@@ -22,6 +35,8 @@ def setup(hass, config):
     gateway = AqaraGateway()   
     gateway.initGateway()
     gateway.listen(timeout=5)
+    
+    gateway.password = config.get(DOMAIN,{}).get(CONF_GATEWAY_PASSWORD,'')
 
     hass.data['AqaraGateway']= gateway
 

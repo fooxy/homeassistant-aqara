@@ -4,7 +4,8 @@ Supported sensors:
   - Temperature / Humidity - reports if temperature change reaches 0.5 ° C or the humidity change reaches 6%.
   - Magnet (Door / Window)
   - Motion
-  - switch (for test, I do not have the switch for the moment.) 
+  - Button Switch (for test, I do not have the switch for the moment.) 
+  - Wall Switch (only aqara double key wall switch had been tested)
 
 ### INSTALLATION
 1. Install Home-Assistant,
@@ -18,11 +19,14 @@ Supported sensors:
     - .homeassistant/custom_components/binary_sensor/aqara.py
 
 4. Add the new platform in the configuration.yaml:
-lowcase is important
+lowercase is important, multiple gateways is not supported by now.
 
     ```yaml
      aqara:
+       gateway_password: yourgatewaypassword
     ```
+
+5. restart the home assistant service, note that it may take several minutes to install the *pyCrypto* dependency during the first start.
 
 ### CUSTOMIZATION
 
