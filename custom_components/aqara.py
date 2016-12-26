@@ -13,7 +13,7 @@ _LOGGER = logging.getLogger(__name__)
 
 DOMAIN = 'aqara'
 
-REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.41-alpha.zip#pyAqara==0.41']
+REQUIREMENTS = ['https://github.com/fooxy/homeassisitant-pyAqara/archive/v0.45-alpha.zip#pyAqara==0.45']
 
 AQARA_COMPONENTS = [
     'sensor','binary_sensor','switch',
