@@ -4,8 +4,9 @@ Supported sensors:
   - Temperature / Humidity - reports if temperature change reaches 0.5 ° C or the humidity change reaches 6%.
   - Magnet (Door / Window)
   - Motion
-  - Button Switch (for test, I do not have the switch for the moment.) 
-  - Wall Switch (only aqara double key wall switch had been tested)
+  - Button Switch(Each switch was shown as three individual virtual switches: ONE_CLICK, DOUBLE_CLICK and LONG_PRESS. Those virtual switches should be better used as automation triggers only)
+  - Power Plug
+  - Aqara Wall Switch
 
 ### INSTALLATION
 1. Install Home-Assistant,
@@ -109,7 +110,7 @@ automation:
 
 ### TODO
 
- - create a custom component as Hub to manage gateway devices.
+ - multiple gateway support
  - include some options in the configuration file : IP, refresh frequency, etc.
  - generate a yaml file with discovered devices
- - integrate wireless switch, light switches, cube, plug, gateway itself (turn on light / radio / etc.)
+ - integrate wireless switch, cube, gateway itself (turn on light / radio / etc.)
