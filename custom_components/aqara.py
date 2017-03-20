@@ -1,4 +1,4 @@
-from homeassistant.components.discovery import load_platform
+from homeassistant.helpers.discovery import load_platform
 from homeassistant.const import (EVENT_HOMEASSISTANT_START,
                                  EVENT_HOMEASSISTANT_STOP)
 

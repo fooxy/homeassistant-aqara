@@ -84,9 +84,9 @@ class AqaraSensor(Entity):
 
     def pushUpdate(self,data):
         if self.deviceVariable == 'temperature':
-            if 'temperature' in data:
+            if 'temperature' in data and data['temperature'] != 100:
                 self._state = float(data['temperature'])/100
         elif self.deviceVariable == 'humidity':
-            if 'humidity' in data:
+            if 'humidity' in data and data['humidity'] != 0:
                 self._state = float(data['humidity'])/100
         super().update_ha_state()

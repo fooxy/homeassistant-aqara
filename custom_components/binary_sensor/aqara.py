@@ -74,7 +74,7 @@ class AqaraBinarySensor(BinarySensorDevice,Entity):
         return self.uniqueID
 
     @property
-    def sensor_class(self):
+    def device_class(self):
         """Return the class of this sensor, from SENSOR_CLASSES."""
         if self.deviceModel == 'motion':
             return 'motion'
